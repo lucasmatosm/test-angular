@@ -1,0 +1,13 @@
+<h2>
+  Bem vindo ao repositorio de Posts da Trinity Solutions, selecione um Post para ver mais detalhes
+</h2>
+
+<p-scrollPanel [style]="{width: '385px', height: '500px'}" style="padding-left: 30px" >
+  <div *ngFor="let post of postList" style="display: flex; flex-wrap: wrap">
+    <p-card title="{{post.title}}" [style]="{width: '360px'}"  style="margin-top: 20px; margin-left: 10px">
+    </p-card>
+  </div>
+
+</p-scrollPanel>
+
+
