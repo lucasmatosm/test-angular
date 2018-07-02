@@ -7,12 +7,15 @@ import {PostsService} from './posts.service';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-
+  public postList: any;
+  public commentsList: any;
   constructor(private postsService: PostsService) { }
+
+  
 
   ngOnInit() {
     this.postsService.getPosts().subscribe(data  => {
-      console.log(data);
+      this.postList = data;
     });
   }
 
