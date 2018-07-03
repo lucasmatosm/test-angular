@@ -6,8 +6,9 @@ import { HttpClient} from '@angular/common/http';
 })
 export class PostsService {
   comments: any = [];
-
+  posts: any = [];
   listComments = new EventEmitter<any>();
+  listPosts = new EventEmitter<any>();
 
   getPosts() {
     return this.http.get('https://my-json-server.typicode.com/typicode/demo/posts');
@@ -29,6 +30,18 @@ export class PostsService {
         const filterComments = this.comments.filter(elemnt => elemnt.postId === post.id);
         filterComments.push(data);
         this.listComments.emit(filterComments);
+      });
+    }, error => {
+    });
+  }
+  newPost(post) {
+    this.http.post('https://my-json-server.typicode.com/typicode/demo/posts', {
+      'title': post,
+    }).subscribe(data => {
+      this.http.get('https://my-json-server.typicode.com/typicode/demo/posts').subscribe(dataPosts => {
+        this.posts = dataPosts;
+        this.posts.push(data);
+        this.listPosts.emit(this.posts);
       });
     }, error => {
     });
