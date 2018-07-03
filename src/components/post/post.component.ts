@@ -9,14 +9,18 @@ import {PostsService} from './posts.service';
 export class PostComponent implements OnInit {
   public postList: any;
   public commentsList = [];
+  message;
   constructor(private postsService: PostsService) { }
 
    public getComents(id) {
        this.postsService.getPostComent(id);
 
    }
-  newComment(post) {
+   newComment(post) {
      this.postsService.newComment(post);
+  }
+  newPost(message) {
+    this.postsService.newPost(message);
   }
 
   ngOnInit() {
@@ -25,7 +29,9 @@ export class PostComponent implements OnInit {
     });
     this.postsService.listComments.subscribe(data => {
       this.commentsList = data;
-      console.log(data);
+    });
+    this.postsService.listPosts.subscribe(data =>{
+       this.postList = data;
     });
   }
 

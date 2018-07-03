@@ -1,6 +1,15 @@
 
 
-<div style="width: 100%; display: flex; margin-top: 30px">
+<div style="width: 100%; margin-left: 30px">
+  <p-panel header="Novo Post"  [style]="{width: '600px'}" style="margin-left: 100px; margin-top: 30px; padding-left: 30px">
+
+      <input type="text" pInputText [(ngModel)]="message"/>
+      <button pButton type="button" label="Add Post" (click)="newPost(message)" icon="pi pi-plus" style="margin-left: 10px"></button>
+  </p-panel>
+</div>
+
+
+<div style="width: 100%; display: flex">
 
 
   <p-scrollPanel  [style]="{width: '600px', height: '500px'}" style="padding-left: 30px" >
@@ -21,7 +30,7 @@
     </div>
 
     <p-footer>
-      <button pButton type="button" label="Add Post" icon="pi pi-plus" style="margin-right: 31px; margin-bottom: 30px; margin-top: 20px; float: right"></button>
+
 
     </p-footer>
 
