@@ -10,6 +10,8 @@ import {PanelModule} from 'primeng/panel';
 import {InputTextModule} from 'primeng/inputtext';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {FormsModule} from '@angular/forms';
+import {PostListComponent} from './post-list/post-list.component';
+import {CommentsListComponent} from './comments-list/comments-list.component';
 
 @NgModule({
   imports: [
@@ -23,7 +25,7 @@ import {FormsModule} from '@angular/forms';
     InputTextModule,
     InputTextareaModule, FormsModule
   ],
-  declarations: [PostComponent],
+  declarations: [PostComponent, PostListComponent, CommentsListComponent],
   providers: [PostsService]
 })
 

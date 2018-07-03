@@ -8,27 +8,22 @@ import {PostsService} from './posts.service';
 })
 export class PostComponent implements OnInit {
   public postList: any;
-  public commentsList = [];
   message;
   constructor(private postsService: PostsService) { }
 
    public getComents(id) {
        this.postsService.getPostComent(id);
-
    }
-   newComment(post) {
-     this.postsService.newComment(post);
-  }
+
   newPost(message) {
-    this.postsService.newPost(message);
+    if (message !== undefined && message !== '' && !(message.match(/^\s+$/))) {
+      this.postsService.newPost(message);
+    }
   }
 
   ngOnInit() {
     this.postsService.getPosts().subscribe(data  => {
       this.postList = data;
-    });
-    this.postsService.listComments.subscribe(data => {
-      this.commentsList = data;
     });
     this.postsService.listPosts.subscribe(data =>{
        this.postList = data;

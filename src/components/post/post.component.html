@@ -1,55 +1,18 @@
 
 
 <div style="width: 100%; margin-left: 30px">
-  <p-panel header="Novo Post"  [style]="{width: '600px'}" style="margin-left: 100px; margin-top: 30px; padding-left: 30px">
+  <p-panel header="Novo Post"  [style]="{width: '470px'}" class="card-post">
 
       <input type="text" pInputText [(ngModel)]="message"/>
-      <button pButton type="button" label="Add Post" (click)="newPost(message)" icon="pi pi-plus" style="margin-left: 10px"></button>
+      <button pButton type="button" label="Add Post"
+              (click)="newPost(message)" icon="pi pi-plus" style="margin-left: 10px"></button>
   </p-panel>
 </div>
 
 
-<div style="width: 100%; display: flex">
-
-
-  <p-scrollPanel  [style]="{width: '600px', height: '500px'}" style="padding-left: 30px" >
-    <div *ngFor="let post of postList" style="display: flex; flex-wrap: wrap">
-      <p-card title="{{post.title}}"  [style]="{width: '580px'}"
-              class="card-hover" style="margin-top: 20px; margin-left: 10px">
-        <p-header>
-
-        </p-header>
-        <p-footer>
-
-          <input type="text" pInputText  [(ngModel)]="post.message"/>
-          <button pButton type="button" label="Add comentário" (click)="newComment(post)" icon="pi pi-plus" style="margin-left: 10px"></button>
-
-        </p-footer>
-      </p-card>
-
-    </div>
-
-    <p-footer>
-
-
-    </p-footer>
-
-
-
-
-
-  </p-scrollPanel>
-
-  <p-scrollPanel [style]="{width: '405px', height: '500px'}" style="padding-left: 30px" *ngIf="commentsList.length !== 0" >
-    <div *ngFor="let coments of commentsList" style="display: flex; flex-wrap: wrap">
-      <p-card   [style]="{width: '380px'}"
-              class="card-hover" style="margin-top: 20px; margin-left: 10px">
-        {{coments.body}}
-      </p-card>
-    </div>
-
-  </p-scrollPanel>
-
+<div style="width: 100%; display: flex; margin-top: -33px">
+  <app-post-list style="margin-left: 30px"></app-post-list>
+  <app-comments-list style="margin-left: 30px"></app-comments-list>
 </div>
 
 

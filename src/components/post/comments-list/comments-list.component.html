@@ -1,0 +1,10 @@
+<p-scrollPanel [style]="{width: '405px', height: '430px'}" style="padding-left: 30px" *ngIf="commentsList.length !== 0" >
+  <div *ngFor="let coments of commentsList" style="display: flex; flex-wrap: wrap">
+    <p-card   [style]="{width: '380px'}"
+              class="card-hover" style="margin-top: 20px; margin-left: 10px">
+      {{coments.body}}
+    </p-card>
+  </div>
+
+</p-scrollPanel>
+
