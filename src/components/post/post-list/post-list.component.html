@@ -1,0 +1,15 @@
+<p-scrollPanel  [style]="{width: '470px', height: '430px'}" style="padding-left: 30px; margin-left: 30px" >
+  <div *ngFor="let post of postList" style="display: flex; flex-wrap: wrap">
+    <p-card title="{{post.title}}"  [style]="{width: '450px', height: '120px'}"
+            class="card-post">
+      <p-footer>
+
+        <input type="text" pInputText  [(ngModel)]="post.message"/>
+        <button pButton type="button" label="Add comentário"
+                (click)="newComment(post)" icon="pi pi-plus" style="margin-left: 10px"></button>
+
+      </p-footer>
+    </p-card>
+  </div>
+
+</p-scrollPanel>
