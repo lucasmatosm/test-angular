@@ -1,26 +1,50 @@
 import { Component, OnInit } from '@angular/core';
 import {PostsService} from './posts.service';
-
+/**
+ * Component selector
+ */
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css']
 })
+/**
+ * Post componet class
+ * @implements OnInit
+ */
 export class PostComponent implements OnInit {
+  /**
+   * List of posts.
+   */
   public postList: any;
+  /**
+   * Post message.
+   */
   message;
+  /**
+   * Post Component constructor
+   * @param postsService
+   */
   constructor(private postsService: PostsService) { }
-
+  /**
+   * Method get all comments of a post
+   * @param id
+   */
    public getComents(id) {
        this.postsService.getPostComent(id);
    }
-
+  /**
+   * Method save a new post
+   * @param message
+   */
   newPost(message) {
     if (message !== undefined && message !== '' && !(message.match(/^\s+$/))) {
       this.postsService.newPost(message);
     }
   }
-
+  /**
+   * Method executed when the component is open
+   */
   ngOnInit() {
     this.postsService.getPosts().subscribe(data  => {
       this.postList = data;
