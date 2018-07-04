@@ -1,7 +1,10 @@
 .card-post{
-  margin-top: 20px; margin-left: 20px
+  margin-left: 20px; margin-bottom: 20px;
 }
 .pi-info-circle:hover{
+  cursor: pointer;
+}
+.pi-pencil:hover{
   cursor: pointer;
 }
 
@@ -10,4 +13,10 @@
   display: flex;
   margin-bottom: 20px;
   float: right; font-size: 25px
+}
+
+.edit-class{
+  display: flex;
+  float: right; font-size: 25px;
+  margin-top: 3px;
 }

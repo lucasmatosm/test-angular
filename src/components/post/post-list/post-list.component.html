@@ -1,9 +1,16 @@
-<p-scrollPanel  [style]="{width: '470px', height: '430px'}" style="padding-left: 50px; margin-left: 30px" >
-  <div *ngFor="let post of postList" style="display: flex; flex-wrap: wrap">
+<p-scrollPanel  [style]="{width: '470px', height: '500px'}" style="padding-top: 50px; padding-left: 50px; margin-left: 30px" >
+  <div *ngFor="let post of postList" style="display: flex; flex-wrap: wrap; padding-top: 30px">
     <p-card   [style]="{width: '430px', height: '120px'}"
             class="card-post">
-        <h3 style="padding: 10px; margin-top: -20px">{{post.title}}</h3>
-        <i class="pi pi-pencil info-class" (click)="getComents(post)"></i>
+      <div style="display: flex" *ngIf="editingPost == post.title">
+        <input type="text" pInputText  [(ngModel)]="post.title" />
+        <i class="pi pi-angle-double-right edit-class" (click)="editPost(post.title)"></i>
+      </div>
+
+        <h3 style="padding: 10px; margin-top: -20px" *ngIf="editingPost != post.title">{{post.title}}</h3>
+
+
+        <i class="pi pi-pencil info-class" (click)="editPost(post.title)"></i>
         <i class="pi pi-info-circle info-class" (click)="getComents(post)"></i>
       <i class="pi pi-trash info-class" (click)="getComents(post)"></i>
 

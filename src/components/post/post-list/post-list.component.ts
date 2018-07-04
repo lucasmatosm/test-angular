@@ -14,6 +14,7 @@ import {a} from '@angular/core/src/render3';
  * @implements OnInit
  */
 export class PostListComponent implements OnInit {
+  editingPost;
   /**
    * List of posts.
    */
@@ -26,6 +27,9 @@ export class PostListComponent implements OnInit {
      if (post.message !== undefined && post.message !== '' && !(post.message.match(/^\s+$/))) {
        this.postsService.newComment(post);
     }
+  }
+  editPost(post) {
+    this.editingPost = post;
   }
 
   /**
@@ -46,6 +50,9 @@ export class PostListComponent implements OnInit {
    */
   ngOnInit() {
     this.postsService.getPosts().subscribe(data  => {
+      this.postList = data;
+    });
+    this.postsService.listPosts.subscribe(data => {
       this.postList = data;
     });
   }
