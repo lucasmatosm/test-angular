@@ -1,3 +1,13 @@
 .card-post{
-  margin-top: 20px; margin-left: 10px
+  margin-top: 20px; margin-left: 20px
+}
+.pi-info-circle:hover{
+  cursor: pointer;
+}
+
+.info-class{
+  margin-top: -40px!important;
+  display: flex;
+  margin-bottom: 20px;
+  float: right; font-size: 25px
 }

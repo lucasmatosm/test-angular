@@ -27,6 +27,15 @@ export class PostListComponent implements OnInit {
        this.postsService.newComment(post);
     }
   }
+
+  /**
+   * Method get all comments of a post
+   * @param post
+   */
+  public getComents(post) {
+    this.postsService.postSelected.emit(post);
+    this.postsService.getPostComent(post.id);
+  }
   /**
    * Post List constructor
    * @param postsService

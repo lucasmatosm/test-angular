@@ -26,6 +26,10 @@ export class PostsService {
    * List of posts Event Emitter
    */
   listPosts = new EventEmitter<any>();
+  /**
+   * Set the postSelected
+   */
+  postSelected = new EventEmitter<any>();
 
   /**
    * Method to get all posts.

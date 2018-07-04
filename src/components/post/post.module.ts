@@ -12,6 +12,7 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
 import {FormsModule} from '@angular/forms';
 import {PostListComponent} from './post-list/post-list.component';
 import {CommentsListComponent} from './comments-list/comments-list.component';
+import {PostInformationsComponent} from './post-informations/post-informations.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,7 @@ import {CommentsListComponent} from './comments-list/comments-list.component';
     InputTextModule,
     InputTextareaModule, FormsModule
   ],
-  declarations: [PostComponent, PostListComponent, CommentsListComponent],
+  declarations: [PostComponent, PostListComponent, CommentsListComponent, PostInformationsComponent],
   providers: [PostsService]
 })
 

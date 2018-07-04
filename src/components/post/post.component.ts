@@ -27,13 +27,6 @@ export class PostComponent implements OnInit {
    */
   constructor(private postsService: PostsService) { }
   /**
-   * Method get all comments of a post
-   * @param id
-   */
-   public getComents(id) {
-       this.postsService.getPostComent(id);
-   }
-  /**
    * Method save a new post
    * @param message
    */
