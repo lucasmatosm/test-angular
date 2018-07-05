@@ -6,7 +6,7 @@ import {PostsService} from './posts.service';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
-  styleUrls: ['./post.component.css']
+  styleUrls: ['./post.component.css'],
 })
 /**
  * Post componet class
@@ -20,26 +20,20 @@ export class PostComponent implements OnInit {
   /**
    * Post message.
    */
-  message;
+  message: string;
   /**
    * Post Component constructor
    * @param postsService
    */
   constructor(private postsService: PostsService) { }
   /**
-   * Method get all comments of a post
-   * @param id
-   */
-   public getComents(id) {
-       this.postsService.getPostComent(id);
-   }
-  /**
    * Method save a new post
    * @param message
    */
-  newPost(message) {
+  newPost(message: string) {
     if (message !== undefined && message !== '' && !(message.match(/^\s+$/))) {
       this.postsService.newPost(message);
+      this.message = '';
     }
   }
   /**
@@ -49,7 +43,7 @@ export class PostComponent implements OnInit {
     this.postsService.getPosts().subscribe(data  => {
       this.postList = data;
     });
-    this.postsService.listPosts.subscribe(data =>{
+    this.postsService.listPosts.subscribe(data => {
        this.postList = data;
     });
   }
