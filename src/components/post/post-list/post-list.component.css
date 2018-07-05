@@ -7,6 +7,13 @@
 .pi-pencil:hover{
   cursor: pointer;
 }
+.edit-class:hover{
+  cursor: pointer;
+}
+
+.trash-class:hover{
+  cursor: pointer;
+}
 
 .info-class{
   margin-top: -40px!important;

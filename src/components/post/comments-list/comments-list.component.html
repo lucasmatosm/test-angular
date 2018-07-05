@@ -1,10 +1,24 @@
+<!-- list of comments -->
 <p-scrollPanel [style]="{width: '405px', height: '500px'}" style="padding-left: 30px" *ngIf="commentsList.length !== 0" >
-  <div *ngFor="let coments of commentsList" style="display: flex; flex-wrap: wrap">
+  <div *ngFor="let comment of commentsList" style="display: flex; flex-wrap: wrap">
     <p-card   [style]="{width: '380px'}"
               class="card-hover" style="margin-top: 20px; margin-left: 10px">
-      {{coments.body}}
+      <!-- Edit form -->
+      <div style="display: flex" *ngIf="editingComment == comment.id">
+        <input type="text" pInputText  [(ngModel)]="comment.body" />
+        <i class="pi pi-ban edit-class" (click)="cancelCommentEdit()"></i>
+        <i class="pi pi-angle-double-right edit-class" (click)="editCommentService(comment)"></i>
+      </div>
+      <!-- comment name -->
+      <h5 *ngIf="editingComment != comment.id">{{comment.body}}</h5>
+      <!-- options -->
+      <i class="pi pi-pencil info-class" (click)="editComment(comment.id)"></i>
+      <i class="pi pi-trash info-class trash-class" (click)="confirmDeletion(comment)"></i>
     </p-card>
   </div>
 
 </p-scrollPanel>
+
+<p-confirmDialog></p-confirmDialog>
+<p-growl [value]="msgs"></p-growl>
 

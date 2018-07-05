@@ -13,6 +13,10 @@ import {FormsModule} from '@angular/forms';
 import {PostListComponent} from './post-list/post-list.component';
 import {CommentsListComponent} from './comments-list/comments-list.component';
 import {PostInformationsComponent} from './post-informations/post-informations.component';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
+import {GrowlModule} from 'primeng/growl';
+import {CommentService} from './comments-list/comments.service';
 
 @NgModule({
   imports: [
@@ -24,10 +28,13 @@ import {PostInformationsComponent} from './post-informations/post-informations.c
     PanelModule,
     InputTextModule,
     InputTextModule,
+    ConfirmDialogModule,
+    GrowlModule,
+
     InputTextareaModule, FormsModule
   ],
   declarations: [PostComponent, PostListComponent, CommentsListComponent, PostInformationsComponent],
-  providers: [PostsService]
+  providers: [PostsService, ConfirmationService, CommentService]
 })
 
 export class PostModule { }

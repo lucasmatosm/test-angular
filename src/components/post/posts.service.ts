@@ -21,16 +21,24 @@ export class PostsService {
   /**
    * List of comments Event Emitter
    */
-  listComments = new EventEmitter<any>();
+  listComments: EventEmitter<any> = new EventEmitter<any>();
   /**
    * List of posts Event Emitter
    */
-  listPosts = new EventEmitter<any>();
+  listPosts: EventEmitter<any> = new EventEmitter<any>();
   /**
    * Set the postSelected
    */
-  postSelected = new EventEmitter<any>();
+  postSelected: EventEmitter<any> = new EventEmitter<any>();
 
+  /**
+   * edit the postSelected
+   */
+  editpostSelected: EventEmitter<boolean> = new EventEmitter<boolean>();
+  /**
+   * remove the post selected
+   */
+  removepostSelected: EventEmitter<any> = new EventEmitter<any>();
   /**
    * Method to get all posts.
    */
@@ -41,7 +49,7 @@ export class PostsService {
    * Method to get all comments of a post with the id
    * @param id
    */
-  getPostComent(id) {
+  getPostComent(id: number) {
      return this.http.get('https://my-json-server.typicode.com/typicode/demo/comments').subscribe(data => {
         this.comments = data;
         this.listComments.emit(this.comments.filter(elemnt => elemnt.postId === id));
@@ -51,7 +59,7 @@ export class PostsService {
    * Method save a new comment in a post.
    * @param post
    */
-  newComment(post) {
+  newComment(post: any) {
     this.http.post('https://my-json-server.typicode.com/typicode/demo/comments', {
       'body': post.message,
       'postId': post.id
@@ -69,7 +77,7 @@ export class PostsService {
    * Method to save a new post
    * @param post
    */
-  newPost(post) {
+  newPost(post: string) {
     this.http.post('https://my-json-server.typicode.com/typicode/demo/posts', {
       'title': post,
     }).subscribe(data => {
@@ -79,6 +87,29 @@ export class PostsService {
         this.listPosts.emit(this.posts);
       });
     }, error => {
+    });
+  }
+  /**
+   * Method to edit a post
+   * @param post
+   */
+  editPost(post: any) {
+    this.http.patch('https://my-json-server.typicode.com/typicode/demo/posts/' + post.id,
+      { 'title': post.title}).subscribe(data => {
+       this.editpostSelected.emit(true);
+    }, error => {
+      this.editpostSelected.emit(false);
+    });
+  }
+  /**
+   * Method to remove a post
+   * @param post
+   */
+  removePost(post: any) {
+    this.http.delete('https://my-json-server.typicode.com/typicode/demo/posts/' + post.id).subscribe(data => {
+      this.removepostSelected.emit(post);
+    }, error => {
+      this.removepostSelected.emit({});
     });
   }
   /**

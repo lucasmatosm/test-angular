@@ -1,14 +1,15 @@
 
-
+<!-- new post input -->
 <div style="width: 100%; margin-left: 30px; display: flex">
   <p-panel header="Novo Post"  [style]="{width: '470px'}" class="card-post">
 
-      <input type="text" pInputText [(ngModel)]="message"/>
+      <input type="text" pInputText placeholder="Novo post" [(ngModel)]="message"/>
       <button pButton type="button" label="Add Post"
               (click)="newPost(message)" icon="pi pi-plus" style="margin-left: 10px"></button>
   </p-panel>
 
   <app-post-informations style="margin-left: 30px; margin-top: 7px"></app-post-informations>
+
 </div>
 
 

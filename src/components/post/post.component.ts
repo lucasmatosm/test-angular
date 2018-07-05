@@ -20,7 +20,7 @@ export class PostComponent implements OnInit {
   /**
    * Post message.
    */
-  message;
+  message: string;
   /**
    * Post Component constructor
    * @param postsService
@@ -30,10 +30,10 @@ export class PostComponent implements OnInit {
    * Method save a new post
    * @param message
    */
-  newPost(message) {
-    console.log(message);
+  newPost(message: string) {
     if (message !== undefined && message !== '' && !(message.match(/^\s+$/))) {
       this.postsService.newPost(message);
+      this.message = '';
     }
   }
   /**
